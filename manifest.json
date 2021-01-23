@@ -1,0 +1,68 @@
+{
+  "manifest_version": 2,
+  "name": "Youtube Remote+ for Helix and Stomp",
+  "version": "1.0",
+  "description": "For use with the Line6 Helix and HX Stomp. Adds shortcuts for play/pause, loop, speed, and seek to YouTube, for use with the QWERTY hotkeys feature in Helix and HX Stomp.",
+  "commands": {
+    "setA": {
+      "suggested_key": {
+        "default": "MacCtrl+Alt+Comma"
+      },
+      "description": "Set marker A"
+    },
+    "setB": {
+      "suggested_key": {
+        "default": "MacCtrl+Alt+Period"
+      },
+      "description": "Set marker B"
+    },
+    "setMarker": {
+      "suggested_key": {
+        "default": "MacCtrl+Alt+M"
+      },
+      "description": "Set loop mark (A if nothing is set, B if A is set)"
+    },
+    "clearLoop": {
+      "suggested_key": {
+        "default": "MacCtrl+Alt+C"
+      },
+      "description": "Clear loop markers"
+    },
+    "speedUp": {
+      "suggested_key": {
+        "default": "MacCtrl+Alt+Up"
+      },
+      "description": "Speed up"
+    },
+    "speedDown": {
+      "suggested_key": {
+        "default": "MacCtrl+Alt+Down"
+      },
+      "description": "Speed down"
+    },
+    "seekFwd": {
+      "suggested_key": {
+        "default": "MacCtrl+Alt+Right"
+      },
+      "description": "Forward 10 seconds"
+    },
+    "seekBack": {
+      "suggested_key": {
+        "default": "MacCtrl+Alt+Left"
+      },
+      "description": "Back 10 seconds"
+    }
+  },
+  "background": {
+    "scripts": ["src/background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.youtube.com/*"
+      ],
+      "js": ["bundle.js"]
+    }
+  ],
+  "permissions": ["storage"]
+}
