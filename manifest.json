@@ -6,13 +6,13 @@
   "commands": {
     "setA": {
       "suggested_key": {
-        "default": "MacCtrl+Alt+Comma"
+        "default": "MacCtrl+Alt+A"
       },
       "description": "Set marker A"
     },
     "setB": {
       "suggested_key": {
-        "default": "MacCtrl+Alt+Period"
+        "default": "MacCtrl+Alt+B"
       },
       "description": "Set marker B"
     },
@@ -57,6 +57,12 @@
         "default": "MacCtrl+Alt+Left"
       },
       "description": "Back 10 seconds"
+    },
+    "toggleSeekRate": {
+      "suggested_key": {
+        "default": "MacCtrl+Alt+S"
+      },
+      "description": "Toggles seek rate between 5, 10, and 15 seconds"
     }
   },
   "background": {

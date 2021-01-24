@@ -8,10 +8,14 @@ import {
   defaults
 } from './storage'
 
+const seekRates = [5, 10, 15]
+let seekRateIndex = 0
 let markerA
 let markerB
 let lastMarkerSet
 let speed
+
+console.log('initial seekRate index', seekRates[seekRateIndex])
 
 const handleLoop = video => {
   const time = video.currentTime
@@ -44,6 +48,12 @@ const setB = video => {
 const setMarker = video => (lastMarkerSet === 'A' ? setB(video) : setA(video))
 
 const togglePlayPause = video => (!video.paused ? video.pause() : video.play())
+
+const toggleSeekRate = () => {
+  seekRateIndex++
+  seekRateIndex = seekRateIndex % seekRates.length
+  logger.info(`seek rate set: ${seekRates[seekRateIndex]} seconds`)
+}
 
 const clearLoop = () => {
   markerA = defaults.aTime
@@ -90,5 +100,6 @@ export default {
   speedUp,
   speedDown,
   seekFwd,
-  seekBack
+  seekBack,
+  toggleSeekRate
 }

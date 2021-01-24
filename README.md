@@ -15,14 +15,15 @@ This project takes _YouTube Remote_ further by adding A/B loop markers, speed co
 | Command             | Hotkey               |
 | :------------------ | :------------------- |
 | Play/Pause          | `Ctrl + Alt + P`     |
-| Set Marker A        | `Ctrl + Alt + ,`     |
-| Set Marker B        | `Ctrl + Alt + .`     |
+| Set Marker A        | `Ctrl + Alt + A`     |
+| Set Marker B        | `Ctrl + Alt + B`     |
 | Toggle Loop Marker  | `Ctrl + Alt + M`     |
 | Clear Markers       | `Ctrl + Alt + C`     |
 | Speed Up            | `Ctrl + Alt + Up`    |
 | Speed Down          | `Ctrl + Alt + Down`  |
 | Fast-foward         | `Ctrl + Alt + Right` |
 | Rewind              | `Ctrl + Alt + Left`  |
+| Toggle Seek Rate    | `Ctrl + Alt + S`  |
 
 ## Status
 
@@ -36,6 +37,7 @@ This project takes _YouTube Remote_ further by adding A/B loop markers, speed co
 - :white_check_mark: Play/Pause
 - :x:                Fast-foward
 - :x:                Rewind
+- :white_check_mark: Toggle Seek Rate
 - :construction:     Save Settings
 - :x:                Visual Feedback
 - :x:                Edit Hotkeys
