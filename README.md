@@ -45,3 +45,15 @@ This project takes _YouTube Remote_ further by adding A/B loop markers, speed co
 - :x:                Edit Hotkeys
 - :x:                Chrome Support
 - :x:                Published
+
+## Build from Source
+
+**Requirements**
+
+- [node](https://nodejs.org/) >= 10.0.0
+- [yarn](https://yarnpkg.com/) >= 1.9.4
+
+```
+  yarn install
+  yarn build
+```
