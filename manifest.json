@@ -72,14 +72,14 @@
     }
   },
   "background": {
-    "scripts": ["dist/background-bundle.js"]
+    "scripts": ["./dist/background-bundle.js"]
   },
   "content_scripts": [
     {
       "matches": [
         "*://*.youtube.com/*"
       ],
-      "js": ["dist/content-bundle.js"]
+      "js": ["./dist/content-bundle.js"]
     }
   ],
   "permissions": ["storage"]
