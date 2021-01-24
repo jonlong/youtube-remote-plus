@@ -56,6 +56,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Provided by Github Actions
         with:
           tag_name: ${{ needs.build.outputs.tag }}
-          release_name: Release ${{ needs.build.outputs.tag }}
+          release_name: ${{ needs.build.outputs.tag }}
           draft: false
           prerelease: false
