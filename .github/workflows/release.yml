@@ -30,7 +30,6 @@ jobs:
         uses: kewisch/action-web-ext@v1
         with:
           cmd: build
-          source: dist
 
       - name: Get package version
         id: vars
