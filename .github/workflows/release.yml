@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       tag: 'v${{ steps.vars.outputs.pkg_version }}'
+      pkg_name: 'v${{ steps.vars.outputs.pkg_name }}'
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -32,6 +33,7 @@ jobs:
           echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
           echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
           echo "::set-output name=pkg_version::$(node -e "console.log(require('./package.json').version);")"
+          echo "::set-output name=pkg_name::$(node -e "console.log(require('./package.json').name);")"
 
       - name: Add & Commit
         uses: EndBug/add-and-commit@v4.2.0
@@ -42,7 +44,7 @@ jobs:
           ref: 'release/v${{ steps.vars.outputs.pkg_version }}'
           tag: 'v${{ steps.vars.outputs.pkg_version }}'
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Provided by Github Actions
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   release:
     name: Create Release
@@ -53,9 +55,9 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Provided by Github Actions
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ needs.build.outputs.tag }}
-          release_name: ${{ needs.build.outputs.tag }}
+          release_name: ${{ needs.build.outputs.pkg_name }}
           draft: false
           prerelease: false
