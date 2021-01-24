@@ -2,12 +2,11 @@
   "name": "youtube-remote-plus",
   "version": "1.0.0",
   "description": "For use with the Line6 Helix and HX Stomp. Adds shortcuts for play/pause, loop, speed, and seek to YouTube, for use with the QWERTY hotkeys feature in Helix and HX Stomp.",
-  "main": "index.js",
   "author": "Jon Long",
   "license": "MIT",
   "private": false,
   "scripts": {
-    "build": "rollup src/content/index.js --file bundle.js --format es",
+    "build": "rollup -c ",
     "watch": "npm run build -- --watch"
   },
   "prettier": "prettier-config-standard",
