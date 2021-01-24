@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build:
+  release:
     name: Create Release Branch and Tag
     runs-on: ubuntu-latest
     outputs:
@@ -39,6 +39,14 @@ jobs:
         uses: kewisch/action-web-ext@v1
         with:
           cmd: build
+
+      - name: "web-ext lint"
+        uses: kewisch/action-web-ext@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          cmd: lint
+          channel: listed
 
       - name: 'web-ext sign'
         id: web-ext-sign
