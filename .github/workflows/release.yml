@@ -21,7 +21,7 @@ jobs:
           cmd: install
 
       - name: Yarn build
-      - uses: borales/actions-yarn@v2.3.0
+        uses: borales/actions-yarn@v2.3.0
         with:
           cmd: build
 
