@@ -33,7 +33,7 @@ This project takes _YouTube Remote_ further by adding A/B loop markers, speed co
 - :white_check_mark: Clear Markers
 - :white_check_mark: Speed Up
 - :white_check_mark: Speed Down
-- :x:                Play/Pause
+- :white_check_mark: Play/Pause
 - :x:                Fast-foward
 - :x:                Rewind
 - :construction:     Save Settings

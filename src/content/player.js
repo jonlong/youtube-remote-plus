@@ -41,13 +41,9 @@ const setB = video => {
   logger.info(`marker B set: ${time}`)
 }
 
-const setMarker = video => {
-  if (lastMarkerSet === 'A') {
-    setB(video)
-  } else {
-    setA(video)
-  }
-}
+const setMarker = video => (lastMarkerSet === 'A' ? setB(video) : setA(video))
+
+const togglePlayPause = video => (!video.paused ? video.pause() : video.play())
 
 const clearLoop = () => {
   markerA = defaults.aTime
@@ -89,6 +85,7 @@ export default {
   setA,
   setB,
   setMarker,
+  togglePlayPause,
   clearLoop,
   speedUp,
   speedDown,

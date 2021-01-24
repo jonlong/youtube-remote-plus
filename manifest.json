@@ -20,7 +20,13 @@
       "suggested_key": {
         "default": "MacCtrl+Alt+M"
       },
-      "description": "Set loop mark (A if nothing is set, B if A is set)"
+      "description": "Toggle loop mark (A if nothing is set, B if A is set)"
+    },
+    "togglePlayPause": {
+      "suggested_key": {
+        "default": "MacCtrl+Alt+P"
+      },
+      "description": "Toggle Play/Pause"
     },
     "clearLoop": {
       "suggested_key": {
