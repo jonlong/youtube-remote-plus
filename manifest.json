@@ -6,7 +6,7 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "{39c28e80-541d-4823-9fc9-44ecae549e8f}",
-      "strict_min_version": "42.0"
+      "strict_min_version": "84.0"
     }
   },
   "commands": {
