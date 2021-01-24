@@ -10,12 +10,11 @@ import {
 
 const seekRates = [5, 10, 15]
 let seekRateIndex = 0
+let seekRate = seekRates[seekRateIndex]
 let markerA
 let markerB
 let lastMarkerSet
 let speed
-
-console.log('initial seekRate index', seekRates[seekRateIndex])
 
 const handleLoop = video => {
   const time = video.currentTime
@@ -49,17 +48,12 @@ const setMarker = video => (lastMarkerSet === 'A' ? setB(video) : setA(video))
 
 const togglePlayPause = video => (!video.paused ? video.pause() : video.play())
 
-const toggleSeekRate = () => {
-  seekRateIndex++
-  seekRateIndex = seekRateIndex % seekRates.length
-  logger.info(`seek rate set: ${seekRates[seekRateIndex]} seconds`)
-}
-
 const clearLoop = () => {
   markerA = defaults.aTime
   markerB = defaults.bTime
 
   clearStoredLoop()
+  logger.info(`markers cleared`)
 }
 
 const speedUp = video => {
@@ -67,8 +61,8 @@ const speedUp = video => {
   speed = Math.min(speed, 5)
   video.playbackRate = speed
 
-  logger.info(`speed increased: ${speed}`)
   storeSpeed(speed)
+  logger.info(`speed increased: ${speed}`)
 }
 
 const speedDown = video => {
@@ -76,12 +70,41 @@ const speedDown = video => {
   speed = Math.max(speed, 0.2)
   video.playbackRate = speed
 
-  logger.info(`speed decreased: ${speed}`)
   storeSpeed(speed)
+  logger.info(`speed decreased: ${speed}`)
 }
 
-const seekFwd = video => console.log('seekFwd called')
-const seekBack = video => console.log('seekBack called')
+const resetSpeed = video => {
+  speed = 1.0
+  video.playbackRate = speed
+
+  storeSpeed(speed)
+  logger.info(`speed reset: ${speed}`)
+}
+
+const seekFwd = video => {
+  const time = video.currentTime + seekRate
+
+  if (time > markerB) {
+    clearLoop()
+  }
+
+  video.currentTime = time
+}
+
+const seekBack = video => {
+  const time = video.currentTime - seekRate
+
+  video.currentTime = time
+}
+
+const toggleSeekRate = () => {
+  seekRateIndex++
+  seekRateIndex = seekRateIndex % seekRates.length
+  seekRate = seekRates[seekRateIndex]
+
+  logger.info(`seek rate set: ${seekRate} seconds`)
+}
 
 export const initPlayer = (video, settings) => {
   markerA = settings.aTime
@@ -99,6 +122,7 @@ export default {
   clearLoop,
   speedUp,
   speedDown,
+  resetSpeed,
   seekFwd,
   seekBack,
   toggleSeekRate

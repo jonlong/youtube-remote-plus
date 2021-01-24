@@ -6,13 +6,13 @@
   "commands": {
     "setA": {
       "suggested_key": {
-        "default": "MacCtrl+Alt+A"
+        "default": "MacCtrl+Alt+1"
       },
       "description": "Set marker A"
     },
     "setB": {
       "suggested_key": {
-        "default": "MacCtrl+Alt+B"
+        "default": "MacCtrl+Alt+2"
       },
       "description": "Set marker B"
     },
@@ -45,6 +45,12 @@
         "default": "MacCtrl+Alt+Down"
       },
       "description": "Speed down"
+    },
+    "resetSpeed": {
+      "suggested_key": {
+        "default": "MacCtrl+Alt+R"
+      },
+      "description": "Reset speed to default"
     },
     "seekFwd": {
       "suggested_key": {
