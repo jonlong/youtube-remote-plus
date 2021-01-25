@@ -46,21 +46,30 @@ jobs:
         with:
           cmd: build
 
-      # - name: web-ext sign
-      #   id: web-ext-sign
-      #   uses: kewisch/action-web-ext@v1
-      #   with:
-      #     cmd: sign
-      #     source: ${{ steps.web-ext-build.outputs.target }}
-      #     channel: unlisted
-      #     apiKey: ${{ secrets.AMO_SIGN_KEY }}
-      #     apiSecret: ${{ secrets.AMO_SIGN_SECRET }}
-      #     timeout: 900000
+      - name: web-ext sign
+        id: web-ext-sign
+        uses: kewisch/action-web-ext@v1
+        with:
+          cmd: sign
+          source: ${{ steps.web-ext-build.outputs.target }}
+          channel: unlisted
+          apiKey: ${{ secrets.AMO_SIGN_KEY }}
+          apiSecret: ${{ secrets.AMO_SIGN_SECRET }}
+          timeout: 900000
 
       - name: Create Release
         uses: softprops/action-gh-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          files: ${{ steps.web-ext-build.outputs.target }}
+          files: ${{ steps.web-ext-sign.outputs.target }}
           tag_name: v${{ steps.vars.outputs.pkg_version }}
+
+      - name: Publish to AMO
+        uses: trmcnvn/firefox-addon@v1
+        with:
+          uuid: '{39c28e80-541d-4823-9fc9-44ecae549e8f}'
+          xpi: ${{ steps.web-ext-sign.outputs.target }}
+          manifest: manifest.json
+          api-key: ${{ secrets.AMO_SIGN_KEY }}
+          api-secret: ${{ secrets.AMO_SIGN_SECRET }}
