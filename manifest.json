@@ -26,7 +26,7 @@
       "suggested_key": {
         "default": "MacCtrl+Alt+M"
       },
-      "description": "Toggle loop mark (A if nothing is set, B if A is set)"
+      "description": "Toggle loop mark"
     },
     "togglePlayPause": {
       "suggested_key": {
@@ -74,7 +74,7 @@
       "suggested_key": {
         "default": "MacCtrl+Alt+S"
       },
-      "description": "Toggles seek rate between 5, 10, and 15 seconds"
+      "description": "Toggles seek rate (5/10/15 seconds)"
     }
   },
   "background": {
@@ -88,5 +88,9 @@
       "js": ["./dist/content-bundle.js"]
     }
   ],
+  "options_ui": {
+    "page": "./dist/options.html",
+    "browser_style": true
+  },
   "permissions": ["storage"]
 }
