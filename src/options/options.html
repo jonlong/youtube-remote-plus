@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      .ytrplus-form {
+        overflow: hidden;
+        padding-bottom: 20px;
+      }
+      .ytrplus-fields {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 5px 0 20px -12px;
+      }
+      .ytrplus-field {
+        margin: 8px 12px;
+      }
+      .ytrplus-label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      .ytrplus-input {
+        color: #999;
+        padding: 7px 10px;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-shadow: inset 0 1px 2px #ddd;
+        border-radius: 4px;
+        vertical-align: middle;
+      }
+
+      .ytrplus-button {
+        color: white;
+        border: transparent;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+        border-radius: 4px;
+        background: #0078e7;
+        padding: 7px 10px;
+      }
+
+      .ytrplus-button--reset {
+        background: #ca3c3c;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h3>Edit Hotkey Combinations</h3>
+    <p>You can edit these hotkeys by formatting them according to the guidelines under <em>Key Combinations</em> in <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/commands#key_combinations">this document</a>.</p>
+    <p><strong>NOTE:</strong> If a key combination is already in use by the browser or an existing add-on, you can't override it. Using the same combination here won't have any effect.</p>
+    <form class="ytrplus-form">
+      <div class="ytrplus-fields">
+      {% for command, meta in commands %}
+        <div class="ytrplus-field">
+          <label class="ytrplus-label" for="{{ command }}--label">
+            {{ meta.description }}
+          </label>
+          <input
+            class="ytrplus-input"
+            data-shortcut
+            type="text"
+            id="{{ command }}"
+            aria-labelledby="{{ command }}--label"
+          />
+        </div>
+      {% endfor %}
+      </div>
+
+      <button class="ytrplus-button" id="update">Update</button>
+      <button class="ytrplus-button ytrplus-button--reset" id="reset">Reset</button>
+    </form>
+    <script src="{{bundleName}}.js"></script>
+  </body>
+</html>

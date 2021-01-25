@@ -1,3 +1,6 @@
+import NunjucksPlugin from '@amprew/rollup-plugin-nunjucks'
+import manifest from './manifest.json'
+
 export default [
   {
     input: './src/content/index.js',
@@ -7,6 +10,7 @@ export default [
       name: 'content-bundle'
     }
   },
+
   {
     input: './src/background.js',
     output: {
@@ -14,5 +18,24 @@ export default [
       format: 'es',
       name: 'background-bundle'
     }
+  },
+
+  {
+    input: './src/options/options.js',
+    output: {
+      file: './dist/options-bundle.js',
+      format: 'es',
+      name: 'options-bundle'
+    },
+    plugins: [
+      NunjucksPlugin({
+        input: './src/options/options.html',
+        output: './dist/options.html',
+        vars: {
+          commands: manifest.commands,
+          bundleName: 'options-bundle'
+        }
+      })
+    ]
   }
 ]
