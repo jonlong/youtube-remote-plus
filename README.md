@@ -42,9 +42,9 @@ This project takes _YouTube Remote_ further by adding A/B loop markers, speed co
 - :white_check_mark: Toggle Seek Rate
 - :construction:     Save Settings
 - :x:                Visual Feedback
-- :x:                Edit Hotkeys
+- :white_check_mark: Edit Hotkeys
 - :x:                Chrome Support
-- :x:                Published
+- :white_check_mark: Published
 
 ## Build from Source
 
