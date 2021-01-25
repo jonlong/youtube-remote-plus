@@ -9,12 +9,11 @@
     "node": ">=10.0.0"
   },
   "scripts": {
-    "build": "rollup -c ",
+    "build": "rollup -c",
     "watch": "npm run build -- --watch"
   },
   "prettier": "prettier-config-standard",
   "devDependencies": {
-    "prettier": "^2.2.1",
     "prettier-config-standard": "^1.0.1",
     "rollup": "^2.37.1"
   }

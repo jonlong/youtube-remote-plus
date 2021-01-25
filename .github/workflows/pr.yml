@@ -4,8 +4,38 @@ on:
   pull_request:
 
 jobs:
-  build:
+  release:
+    name: Build with Artifact
     runs-on: ubuntu-latest
     steps:
-      - name: Build Action
-        uses: ./actions/build
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Yarn install
+        uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: install
+
+      - name: Yarn build
+        uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: build
+
+      - name: web-ext lint
+        uses: kewisch/action-web-ext@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          cmd: lint
+          channel: listed
+
+      - name: web-ext build
+        id: web-ext-build
+        uses: kewisch/action-web-ext@v1
+        with:
+          cmd: build
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@master
+        with:
+          path: ${{ steps.web-ext-build.outputs.target }}
