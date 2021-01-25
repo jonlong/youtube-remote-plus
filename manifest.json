@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Youtube Remote+ for Helix and Stomp",
-  "version": "1.0",
+  "version": "1.1.0",
   "description": "For use with the Line6 Helix and HX Stomp. Adds shortcuts for play/pause, loop, speed, and seek to YouTube, for use with the QWERTY hotkeys feature in Helix and HX Stomp.",
   "browser_specific_settings": {
     "gecko": {
