@@ -12,7 +12,7 @@ This project takes _YouTube Remote_ further by adding A/B loop markers, speed co
 
 ## Hotkeys
 
-| Command             | Hotkey               |
+| Command             | Default Hotkey       |
 | :------------------ | :------------------- |
 | Play/Pause          | `Ctrl + Alt + P`     |
 | Set Marker A        | `Ctrl + Alt + 1`     |
@@ -41,6 +41,7 @@ This project takes _YouTube Remote_ further by adding A/B loop markers, speed co
 - :white_check_mark: Rewind
 - :white_check_mark: Toggle Seek Rate
 - :construction:     Save Settings
+- :x:                Support Multiple Tabs/Windows
 - :x:                Visual Feedback
 - :white_check_mark: Edit Hotkeys
 - :x:                Chrome Support
